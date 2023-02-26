@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="13247" started-at="2023-02-26T20:42:12 BRT" finished-at="2023-02-26T20:42:25 BRT">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:executa.ExecutarIT@87f383f]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Surefire test" duration-ms="13247" started-at="2023-02-26T20:42:12 BRT" finished-at="2023-02-26T20:42:25 BRT">
+      <class name="executa.ExecutarIT">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:executa.ExecutarIT@87f383f]" name="setUpClass" is-config="true" duration-ms="1165" started-at="2023-02-26T20:42:12 BRT" finished-at="2023-02-26T20:42:13 BRT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@bd2f5a9]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:executa.ExecutarIT@87f383f]" name="runScenario" duration-ms="11488" started-at="2023-02-26T20:42:13 BRT" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-02-26T20:42:24 BRT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Pesquisa Java no Google"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Pesquisa no Google]"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[2023-02-26T20:42:24.753erro_ao_tentar_espero_campo_pesquisa_ficar_visivel]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: 2023-02-26T20:42:24.753erro_ao_tentar_espero_campo_pesquisa_ficar_visivel
+at org.testng.Assert.fail(Assert.java:110)
+at paginas.Metodos.esperarClicavel(Metodos.java:183)
+at paginas.Navegacoes.realizarPesquisa(Navegacoes.java:13)
+at steps.Testes.realizo_pesquisa_java(Testes.java:29)
+at ✽.realizo pesquisa java(file:///C:/Users/Gabriel/Desktop/PocJavaWeb/src/test/resources/features/01_Google.feature:13)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:executa.ExecutarIT@87f383f]" name="tearDownClass" is-config="true" duration-ms="410" started-at="2023-02-26T20:42:24 BRT" finished-at="2023-02-26T20:42:25 BRT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- executa.ExecutarIT -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
