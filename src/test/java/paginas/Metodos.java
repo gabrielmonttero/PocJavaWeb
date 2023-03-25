@@ -1,9 +1,11 @@
 package paginas;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.maven.shared.utils.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -14,8 +16,8 @@ import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
@@ -32,19 +34,29 @@ public class Metodos {
     public void abrirNavegador(String site, String navegador, String descricaoPasso) throws IOException {
 
         try {
-            if (navegador == "Chrome" || navegador == "Firefox") {
+            if (navegador == "Chrome" || navegador == "Firefox" || navegador == "Edge") {
                 if (navegador == "Chrome") {
                     System.setProperty("webdriver.chrome.driver", "./driver/chrome_driver/chromedriver.exe");
                     ChromeOptions options = new ChromeOptions();
                     options.setHeadless(false);
+                    options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
                     driver.get(site);
                     driver.manage().window().maximize();
                 } else if (navegador == "Firefox") {
                     System.setProperty("webdriver.gecko.driver", "./driver/gecko_driver/geckodriver.exe");
                     FirefoxOptions options = new FirefoxOptions();
-                    options.setHeadless(true);
+                    options.setHeadless(false);
+                    options.addArguments("--remote-allow-origins=*");
                     driver = new FirefoxDriver(options);
+                    driver.get(site);
+                    driver.manage().window().maximize();
+                } else if (navegador == "Edge") {
+                    System.setProperty("webdriver.edge.driver", "./driver/edge_driver/msedgedriver.exe");
+                    EdgeOptions options = new EdgeOptions();
+                    options.setHeadless(false);
+                    options.addArguments("--remote-allow-origins=*");
+                    driver = new EdgeDriver(options);
                     driver.get(site);
                     driver.manage().window().maximize();
                 }
@@ -133,25 +145,6 @@ public class Metodos {
     }
 
     /**
-     * Duplo Click
-     *
-     * @author Gabriel M Pereira
-     *
-     */
-    public void duploCliqueNoElemento(By elemento, String descricaoPasso) throws IOException {
-        long TIMEOUT = 60;
-        Actions action = new Actions(driver);
-        try {
-            driver.manage().timeouts().pageLoadTimeout(TIMEOUT, TimeUnit.SECONDS);
-            action.doubleClick(
-                    new WebDriverWait(driver, TIMEOUT).until(ExpectedConditions.elementToBeClickable(elemento)));
-        } catch (Exception e) {
-            printScreenErros("erro_ao_tentar_" + descricaoPasso);
-            Assert.fail(LocalDateTime.now() + "erro_ao_tentar_" + descricaoPasso);
-        }
-    }
-
-    /**
      * Selecionar Combo na Posicao
      *
      * @author Gabriel M Pereira
@@ -176,7 +169,7 @@ public class Metodos {
      */
     public void esperarClicavel(By elemento, String descricaoPasso) throws IOException {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 60);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(elemento));
         } catch (Exception e) {
             printScreenErros("erro_ao_tentar_" + descricaoPasso);

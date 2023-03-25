@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: executa.ExecutarIT
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 15.124 s <<< FAILURE! - in executa.ExecutarIT
-executa.ExecutarIT.runScenario["Pesquisa Java no Google", "Optional[Pesquisa no Google]"](1)  Time elapsed: 11.567 s  <<< FAILURE!
-java.lang.AssertionError: 2023-02-26T20:42:24.753erro_ao_tentar_espero_campo_pesquisa_ficar_visivel
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 13.354 s <<< FAILURE! - in executa.ExecutarIT
+executa.ExecutarIT.runScenario["Pesquisa Java no Google", "Optional[Pesquisa no Google]"](1)  Time elapsed: 10.847 s  <<< FAILURE!
+java.lang.AssertionError: 2023-03-14T20:59:18.459495400erro_ao_tentar_espero_campo_pesquisa_ficar_visivel
 

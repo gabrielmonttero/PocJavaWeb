@@ -17,10 +17,9 @@ public class Testes {
     Navegacoes nv = new Navegacoes();
     ElementosWeb el = new ElementosWeb();
 
-
     @Dado("que eu acesse o site {string}")
     public void que_eu_acesse_o_site(String site) throws IOException {
-        mt.abrirNavegador(site, "Chrome", "abro_o_navegador");
+        mt.abrirNavegador(site, "Edge", "abro_o_navegador");
 
     }
 
